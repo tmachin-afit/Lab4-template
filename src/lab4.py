@@ -12,6 +12,10 @@ from tensorflow.keras.layers import Input, Dense, Conv2D, GlobalAveragePooling2D
 from tensorflow.keras.models import Model, load_model
 from tensorflow.keras.optimizers import RMSprop
 
+# Set file paths
+fig_path = '/remote_home/Lab4/Lab4-template/Figures'
+model_path = '/remote_home/Lab4/Lab4-template/models'
+
 
 def get_data_with_preprocessing(cat_indices):
     # label_names = {
@@ -29,7 +33,8 @@ def get_data_with_preprocessing(cat_indices):
     (x_train, y_train_raw), (x_test, y_test_raw) = cifar10.load_data()
 
     # do some pre-processsing to normalize and sort out cat class
-
+    y_train_cats = y_train_raw      # FIXME
+    y_test_cats = y_test_raw        # FIXME
     return (x_train, y_train_cats), (x_test, y_test_cats)
 
 
@@ -41,15 +46,15 @@ def main():
     (x_train, y_train_cats), (x_test, y_test_cats) = get_data_with_preprocessing(cat_indices)
 
     train_model = True
-    if not os.path.exists("model.h5") or train_model:
+    if not os.path.exists(f'{model_path}/model.h5') or train_model:
         # train your model. this should include the early models as well (but early models should not run in the finished lab)
         model = None
 
         # save your model
-        model.save('model.h5')
+        model.save(f'{model_path}/model.h5')
     else:
         # load your model
-        model = load_model('model.h5')
+        model = load_model(f'{model_path}/model.h5')
 
     # get visualization data
     visualize_test = True
@@ -115,12 +120,14 @@ def main():
     plt.figure()
     plot_confusion_matrix(confusion_matrix, classes=class_names,
                           title='Confusion matrix, without normalization')
+    plt.savefig(f'{fig_path}/{title}')
 
     # Plot normalized confusion matrix
     plt.figure()
     plot_confusion_matrix(confusion_matrix, classes=class_names, normalize=True,
                           title='Normalized confusion matrix')
-    plt.show()
+    plt.savefig(f'{fig_path}/{title}')
+    # plt.show()
 
     # comment on your recall statistic for the cat class in the final model you made
 

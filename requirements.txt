@@ -1,8 +1,7 @@
 # make sure there were installed by the base
-numpy
-tensorflow~=2.8.0
-
 scikit-learn
-sklearn
 pandas
 matplotlib
+statsmodels
+tqdm
+seaborn
