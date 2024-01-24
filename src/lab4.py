@@ -57,7 +57,7 @@ def main():
         model = load_model(f'{model_path}/model.h5')
 
     # get visualization data
-    visualize_test = True
+    visualize_test = False
     if visualize_test:
         x_visualize = x_test
         y_visualize = y_test_cats
@@ -130,6 +130,8 @@ def main():
     # plt.show()
 
     # comment on your recall statistic for the cat class in the final model you made
+
+    # What would be the expected accuracy if we just guessed ALWAYS not cat? 
 
     # Retrain your model with the weighting and add a comment on the cat recall statistic.
 
