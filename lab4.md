@@ -3,6 +3,15 @@ We will use the machine learning workflow to solve our problem again. Thus, this
 ## Problem 
 We need to determine if a cat is in a picture. By cat, I mean any kind of cat. We can assume the pictures can be slimmed down to a `32x32` image without any loss of information
 
+# Environment Setup
+CPU:                2
+
+Max CPU:         Default
+
+Memory:         16 Gig
+
+GPU:                 1 (exclusive)
+
 ## Step 1 Get some data
 In this lab we will be working with the slimmed down version of the CIFAR dataset called CIFAR-10. This dataset has 10 labels in it of different kinds of objects from animals (like cats) to houses, vehicles, etc. 
 
