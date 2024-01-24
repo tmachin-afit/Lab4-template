@@ -1,5 +1,5 @@
 # Lab 4
-We will use the machine learning workflow to solve our problem again. Thus, this lab is broken into those parts in order to solve our problem
+We will use the machine learning workflow to solve our problem again. Thus, this lab is broken into the same 7 part workflow to solve our problem
 ## Problem 
 We need to determine if a cat is in a picture. By cat, I mean any kind of cat. We can assume the pictures can be slimmed down to a `32x32` image without any loss of information
 
@@ -19,14 +19,14 @@ Remember your problem is to only determine if the picture is a cat or not a cat.
 ## Step 2 Measures of Success
 Since we want to know if a cat is a picture or not we are looking at a binary classification problem. Thus, we are going to use `binary_crossentropy` as a loss and `accuracy` as a metric.
 
-Since getting a realistic baseline for an estimator that uses images (without using a CNN) is difficult, our baseline will be a simulated coin flip. The simulated coin flip we will assume gets an accuracy of 50%. Thus, we want to be better than 50% in order to have a model that is any way useful. Ideally we want the accuracy as high as possible but do not get stressed about the performance because this is lab. 
+Since getting a realistic baseline for an estimator that uses images (without using a CNN) is difficult, our baseline will be a simulated coin flip. The simulated coin flip we will assume gets an accuracy of 50%. Thus, we want to be better than 50% to have a model that is any way useful. Ideally we want the accuracy as high as possible but do not get stressed about the performance because this is lab. 
 
 Also in this section have python print what the accuracy would be if we always guessed `not cat` for this dataset.
 
-## Step 3 Prepare out Data
-We want to remember to normalize the pixels values. We are going to keep the images as images this time and not flatten them. Thus, we will have images with shape `32 x 32 x 3`.
+## Step 3 Prepare our Data
+We want to remember to normalize the pixels values. We are going to keep the images as images (arrays) this time and not flatten them. Thus, we will have images with shape `32 x 32 x 3`.
 
-We also need to change the output to be cat or not cat. Here are the class labels:
+We also need to change the output to be cat or not cat. Here are the default class labels of Cifar-10:
 ```python
 label_names = {
         0: 'airplane',
@@ -44,15 +44,16 @@ label_names = {
 
 ## Step 4 Determine an Evaluation Method
 There is already a train/test split for this data. We will use this test split as the test data, but you will need to make your own validation data from the training data.
+Use the standard 'train_test_split' or in the model.fit() function with the validation_split parameter. 
 
 ## Step 5 Develop a model
-Develop a model that compiles given our input, output, and loss functions. Remember you will want to increase the number of filters (channels) as you get deeper in the network which should be reducing the image sizes (using some technique like valid padding CNN layers or max pooling layers). We also probably want to use a Global Average Pooling layer as our final or just before final layer.
+Develop a model that compiles given our input, output, and loss functions. Remember you will want to increase the number of filters (channels) as you get deeper in the network which should be reducing the image sizes (using some technique like valid padding CNN layers or max pooling layers). We also probably want to use a Global Average Pooling layer before any Dense or classification layers.
 
 ## Step 6 Overfit Model
-After you get the model to compile we need to overfit to the training data. For this we should make a couple of layers of CNNs stacked on top of each other. Remember it is a good idea to increase the number of channels while reducing the output image size. It may take a long time to train especially if you are using CPUs so do not stress if you cannot achieve a very high accuracy. However, you should be better than our baseline on the training set which would be over 50% accuracy. 
+After you get the model to compile, we need to overfit to the training data. For this, we should make a couple of layers of CNNs stacked on top of each other. Remember it is a good idea to increase the number of channels while reducing the output image size. It may take a long time to train, so do not stress if you cannot achieve a very high accuracy. However, you should be better than our baseline on the training set which would be over 50% accuracy. 
 
 ## Step 7 Regularize Model
-Now that our model can do well on the training data we want to make sure we have generalized. If we have not generalized well to our validation set, add some regularization to increase your validation performance. For example, you could add dropout, or L1 or L2 kernel regularizers or data augmentation. 
+Now that our model can do well on the training data we want to make sure we have generalized for future images. If we have not generalized well to our validation set, add some regularization to increase your validation performance. For example, you could add dropout, L1 or L2 kernel regularizers or data augmentation. 
 
 ## After the 7-Step Process
 ### Visualization
