@@ -42,6 +42,8 @@ label_names = {
     }
 ```
 
+If normalizing your data, consider the methods shown [here](https://stackoverflow.com/questions/48785115/numpy-normalize-rgb-pixel-array), or [here](https://forums.fast.ai/t/diving-by-255-vs-img-mean-std-should-both-be-done/82580). These normalize the pixel values similarly to just dividing by 255, but includes considerations for contrast within the data. 
+
 ## Step 4 Determine an Evaluation Method
 There is already a train/test split for this data. We will use this test split as the test data, but you will need to make your own validation data from the training data.
 

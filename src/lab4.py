@@ -12,9 +12,10 @@ from tensorflow.keras.layers import Input, Dense, Conv2D, GlobalAveragePooling2D
 from tensorflow.keras.models import Model, load_model
 from tensorflow.keras.optimizers import RMSprop
 
-# Set file paths
-fig_path = '/remote_home/Lab4/Lab4-template/Figures'
-model_path = '/remote_home/Lab4/Lab4-template/models'
+# FIXME Set file paths
+fig_path = '/remote_home/Lab4-template/figures'
+model_path = '/remote_home/Lab4-template/models'
+log_path = '/remote_home/Lab4-template/logs'
 
 
 def get_data_with_preprocessing(cat_indices):
@@ -45,9 +46,13 @@ def main():
 
     (x_train, y_train_cats), (x_test, y_test_cats) = get_data_with_preprocessing(cat_indices)
 
+    log_dir = os.path.join(f"{log_path}", datetime.datetime.now().strftime("%Y%m%d-%H%M%S"))
+    callbacks = [TensorBoard(log_dir=log_dir, histogram_freq=1)]
+    
     train_model = True
     if not os.path.exists(f'{model_path}/model.h5') or train_model:
         # train your model. this should include the early models as well (but early models should not run in the finished lab)
+        # FIXME
         model = None
 
         # save your model
@@ -66,7 +71,7 @@ def main():
         y_visualize = y_train_cats
 
     # make the prediction and true classes
-    y_pred = None  # add your prediction code here using x_visualize
+    y_pred = None  # FIXME add your prediction code here using x_visualize
 
     # get the true classes and the class names
     y_true = y_visualize
@@ -120,19 +125,19 @@ def main():
     plt.figure()
     plot_confusion_matrix(confusion_matrix, classes=class_names,
                           title='Confusion matrix, without normalization')
-    plt.savefig(f'{fig_path}/{title}')
+    plt.savefig(f'{fig_path}/{title}.png')
 
     # Plot normalized confusion matrix
     plt.figure()
     plot_confusion_matrix(confusion_matrix, classes=class_names, normalize=True,
                           title='Normalized confusion matrix')
-    plt.savefig(f'{fig_path}/{title}')
+    plt.savefig(f'{fig_path}/{title}.png')
     # plt.show()
 
-    # comment on your recall statistic for the cat class in the final model you made
-
+    # comment on your recall statistic for the cat class in the final model you made. What would happen if you guessed 'not cat' for every one?
+    # FIXME
     # Retrain your model with the weighting and add a comment on the cat recall statistic.
-
+    # FIXME
 
 if __name__ == "__main__":
     main()
