@@ -37,8 +37,7 @@ def get_data_with_preprocessing(cat_indices):
     y_train_cats = y_train_raw      # FIXME
     y_test_cats = y_test_raw        # FIXME
     return (x_train, y_train_cats), (x_test, y_test_cats)
-  git config --global user.email "you@example.com"
-  git config --global user.name "Your Name"
+ 
 
 def main():
     print("Num GPUs Available: ", len(tf.config.list_physical_devices('GPU')))
