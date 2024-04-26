@@ -37,7 +37,8 @@ def get_data_with_preprocessing(cat_indices):
     y_train_cats = y_train_raw      # FIXME
     y_test_cats = y_test_raw        # FIXME
     return (x_train, y_train_cats), (x_test, y_test_cats)
-
+  git config --global user.email "you@example.com"
+  git config --global user.name "Your Name"
 
 def main():
     print("Num GPUs Available: ", len(tf.config.list_physical_devices('GPU')))
@@ -62,7 +63,7 @@ def main():
         model = load_model(f'{model_path}/model.h5')
 
     # get visualization data
-    visualize_test = True
+    visualize_test = False
     if visualize_test:
         x_visualize = x_test
         y_visualize = y_test_cats
@@ -134,8 +135,12 @@ def main():
     plt.savefig(f'{fig_path}/{title}.png')
     # plt.show()
 
-    # comment on your recall statistic for the cat class in the final model you made. What would happen if you guessed 'not cat' for every one?
+    # comment on your recall statistic for the cat class in the final model you made
     # FIXME
+
+    # What would be the expected accuracy if we just guessed ALWAYS not cat? 
+    # FIXME
+
     # Retrain your model with the weighting and add a comment on the cat recall statistic.
     # FIXME
 
